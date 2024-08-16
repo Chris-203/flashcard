@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@stripe/stripe-js": "^4.2.0",
+    "next": "14.2.5",
+    "openai": "^4.55.5",
+    "rm": "^0.1.8",
+    "stripe": "^16.7.0"
+  }
+}
