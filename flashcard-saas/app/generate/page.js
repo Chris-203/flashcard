@@ -1,6 +1,7 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
   Box,
   Button,
@@ -41,6 +42,8 @@ export default function Generate() {
   const searchParams = useSearchParams();
   const collectionName = searchParams.get("collection");
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
 
   const fetchCollections = useCallback(async () => {
     if (user) {
@@ -72,7 +75,8 @@ export default function Generate() {
       alert("You must be signed in to generate flashcards.");
       return;
     }
-    
+
+    setLoading(true);
     fetch("/api/generate", {
       method: "POST",
       body: text,
@@ -82,7 +86,13 @@ export default function Generate() {
         console.log(data);
         setFlashcards(data);
       });
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000); // Adjust the timeout to simulate your loading time
+    
+    
   };
+
 
   const handleCardClick = (id) => {
     setFlipped((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -198,14 +208,15 @@ export default function Generate() {
           variant="outlined"
           sx={{ mb: 2, width: "500px" }}
         />
-        <Button
+        <LoadingButton
+          loading={loading}
           variant="contained"
           color="primary"
           sx={{ width: "150px", height: "60px" }}
           onClick={handleGenerate}
         >
-          Generate Flashcards
-        </Button>
+          <span>Generate Flashcards</span>
+        </LoadingButton>
       </Box>
 
       {flashcards.length > 0 && (
@@ -375,3 +386,4 @@ export default function Generate() {
     </Box>
   );
 }
+
