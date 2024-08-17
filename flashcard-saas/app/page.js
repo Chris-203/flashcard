@@ -27,7 +27,7 @@ export default function Home() {
       console.warn(error.message);
     }
   };
-  
+
   return (
     <Box>
       <Head>
@@ -38,11 +38,11 @@ export default function Home() {
       <CustomAppBar />
       <Container>
         <Box sx={{ textAlign: "center", my: 4 }}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            Studify AI
+          <Typography variant="h2" component="h1" gutterBottom color={"secondary"}>
+            <strong>Studify AI</strong>
           </Typography>
           <Typography variant="h5" component="h2" gutterBottom>
-            The easiest way to create flashcards from your text.
+            The easiest way to create flashcards from your text
           </Typography>
           <Button
             variant="contained"
@@ -54,46 +54,81 @@ export default function Home() {
           </Button>
         </Box>
 
-        <Box sx={{ my: 6 }}>
-          <Typography variant="h4" component="h2" gutterBottom align='center'> 
+        <Box sx={{ my: 6 , padding: 1, }}>
+          <Typography variant="h4" component="h2" gutterBottom align='center' padding={1}> 
             Features
           </Typography>
 
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Easy Text Input
-              </Typography>
-              <Typography>
-                Simply input your text and let our software do the rest.
-                Creating flashcards has never been easier
-              </Typography>
+              <Box
+                  sx={{
+                    p: 3,
+                    border: "1px solid",
+                    borderColor: "grey.300",
+                    borderRadius: 2,
+                    ":hover": {
+                    boxShadow: 6,
+                   },
+                  }}
+                >
+                  <Typography variant="h6" gutterBottom color={"primary"}>
+                    Easy Text Input
+                  </Typography>
+                  <Typography>
+                    Simply input your text and let our software do the rest.
+                    Creating flashcards has never been easier
+                  </Typography>
+              </Box>
             </Grid>
 
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
+            <Box
+                sx={{
+                  p: 3,
+                  border: "1px solid",
+                  borderColor: "grey.300",
+                  borderRadius: 2,
+                  ":hover": {
+                    boxShadow: 6,
+                   },
+                }}
+              >
+              <Typography variant="h6" gutterBottom color={"primary"}>
                 Smart Flashcards
               </Typography>
               <Typography>
                 Our AI intelligently breaks down your text into concise
                 flashcards, perfect for studying.
               </Typography>
+              </Box>
             </Grid>
 
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Accessible Anywhere
+            <Box
+                sx={{
+                  p: 3,
+                  border: "1px solid",
+                  borderColor: "grey.300",
+                  borderRadius: 2,
+                  ":hover": {
+                    boxShadow: 6,
+                   },
+                }}
+              >
+              <Typography variant="h6" gutterBottom color={"primary"}>
+                Comprehensive Collection
               </Typography>
               <Typography>
-                Access your flashcards from any device, at any time. Study on
-                the go with ease.
+              Bundle your cards together through the collection feature. Add your flashcards to a new or existing collection. 
               </Typography>
+              </Box>
             </Grid>
           </Grid>
         </Box>
 
         <Box sx={{ my: 6, textAlign: "center" }}>
-          <Typography variant="h4" component="h2" gutterBottom>
+          <Typography variant="h4" component="h2" gutterBottom padding={1}>
             Pricing
           </Typography>
           <Grid container spacing={4} justifyContent="center">
@@ -101,12 +136,12 @@ export default function Home() {
               <Box
                 sx={{
                   p: 3,
-                  border: "1px solid",
+                  border: "3px solid",
                   borderColor: "grey.300",
                   borderRadius: 2,
                 }}
               >
-                <Typography variant="h5" gutterBottom>
+                <Typography variant="h5" gutterBottom color={"primary"}>
                   Basic
                 </Typography>
                 <Typography variant="h6" gutterBottom>
@@ -130,12 +165,12 @@ export default function Home() {
               <Box
                 sx={{
                   p: 3,
-                  border: "1px solid",
+                  border: "3px solid",
                   borderColor: "grey.300",
                   borderRadius: 2,
                 }}
               >
-                <Typography variant="h5" gutterBottom>
+                <Typography variant="h5" gutterBottom color={"primary"}>
                   Pro
                 </Typography>
                 <Typography variant="h6" gutterBottom>
