@@ -72,12 +72,12 @@ export default function Home() {
                    },
                   }}
                 >
-                  <Typography variant="h6" gutterBottom color={"primary"}>
+                  <Typography variant="h6" gutterBottom color={"secondary"}>
                     Easy Text Input
                   </Typography>
                   <Typography>
                     Simply input your text and let our software do the rest.
-                    Creating flashcards has never been easier
+                    Creating flashcards has never been easier.
                   </Typography>
               </Box>
             </Grid>
@@ -94,7 +94,7 @@ export default function Home() {
                    },
                 }}
               >
-              <Typography variant="h6" gutterBottom color={"primary"}>
+              <Typography variant="h6" gutterBottom color={"secondary"}>
                 Smart Flashcards
               </Typography>
               <Typography>
@@ -116,7 +116,7 @@ export default function Home() {
                    },
                 }}
               >
-              <Typography variant="h6" gutterBottom color={"primary"}>
+              <Typography variant="h6" gutterBottom color={"secondary"}>
                 Comprehensive Collection
               </Typography>
               <Typography>
@@ -141,14 +141,14 @@ export default function Home() {
                   borderRadius: 2,
                 }}
               >
-                <Typography variant="h5" gutterBottom color={"primary"}>
+                <Typography variant="h5" gutterBottom color={"secondary"}>
                   Basic
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                   Free
                 </Typography>
                 <Typography>
-                  Access to basic flashcard features and limited storage.
+                  Access to basic flashcard features and limited storage
                 </Typography>
                 <Button
                   variant="contained"
@@ -170,14 +170,14 @@ export default function Home() {
                   borderRadius: 2,
                 }}
               >
-                <Typography variant="h5" gutterBottom color={"primary"}>
+                <Typography variant="h5" gutterBottom color={"secondary"}>
                   Pro
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                   $5 / month
                 </Typography>
                 <Typography>
-                  Unlimited flashcards and storage.
+                  Unlimited flashcards and storage
                 </Typography>
                 <Button
                   variant="contained"
