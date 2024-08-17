@@ -54,7 +54,7 @@ export default function Home() {
         </Box>
 
         <Box sx={{ my: 6 }}>
-          <Typography variant="h4" component="h2" gutterBottom>
+          <Typography variant="h4" component="h2" gutterBottom align='center'> 
             Features
           </Typography>
 
