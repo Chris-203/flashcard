@@ -212,7 +212,7 @@ export default function Generate() {
         <>
           <Box sx={{ mt: 4 }}>
             <Container maxWidth={false} sx={{ px: 2, mt: 1 }}>
-              <Typography variant="h5" component="h2" gutterBottom>
+              <Typography variant="h5" component="h2" gutterBottom align="center" padding={2}>
                 Flashcards Preview
               </Typography>
               <CustomGrid container spacing={2} sx={{ mt: -0.5 }}>
@@ -220,7 +220,8 @@ export default function Generate() {
                   <Grid item xs={12} sm={6} md={4} key={index}>
                     <Card
                       sx={{
-                        backgroundColor: "#9ea9b1",
+                        backgroundColor: "#9c27b0",
+                        borderRadius: "10px",
                         width: "100%",
                         mx: "auto",
                       }}
@@ -236,7 +237,8 @@ export default function Generate() {
                                 position: "relative",
                                 width: "100%",
                                 height: "200px",
-                                bgcolor: "#eeeeee", //Card front
+                                bgcolor: "lightblue", //Card front
+                                borderRadius: "10px",
                                 boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
                                 transform: flipped[index]
                                   ? "rotateY(180deg)"
@@ -256,6 +258,7 @@ export default function Generate() {
                               "&>div>div:nth-of-type(2)": {
                                 transform: "rotateY(180deg)",
                                 backgroundColor: "white", //card back
+                                borderRadius: "10px",
                               },
                             }}
                           >
