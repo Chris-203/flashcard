@@ -68,8 +68,11 @@ export default function Generate() {
   }, [user, fetchCollections]);
 
   const handleGenerate = async () => {
-    if (!user) return;
-
+    if (!user) {
+      alert("You must be signed in to generate flashcards.");
+      return;
+    }
+    
     fetch("/api/generate", {
       method: "POST",
       body: text,
