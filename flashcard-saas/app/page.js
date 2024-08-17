@@ -109,7 +109,7 @@ export default function Home() {
                   Basic
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                  $5 / month
+                  Free
                 </Typography>
                 <Typography>
                   Access to basic flashcard features and limited storage.
@@ -118,7 +118,7 @@ export default function Home() {
                   variant="contained"
                   color="primary"
                   sx={{ mt: 2 }}
-                  onClick={handleSubmit}
+                  href="/generate"
                 >
                   Choose Basic
                 </Button>
