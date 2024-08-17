@@ -138,10 +138,10 @@ export default function Home() {
                   Pro
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                  $10 / month
+                  $5 / month
                 </Typography>
                 <Typography>
-                  Unlimited flashcard and storage, with priority support.
+                  Unlimited flashcards and storage.
                 </Typography>
                 <Button
                   variant="contained"
