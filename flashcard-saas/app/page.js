@@ -38,7 +38,7 @@ export default function Home() {
       <Container>
         <Box sx={{ textAlign: "center", my: 4 }}>
           <Typography variant="h2" component="h1" gutterBottom>
-            Welcome to Flashcard SaaS
+            Studify AI
           </Typography>
           <Typography variant="h5" component="h2" gutterBottom>
             The easiest way to create flashcards from your text.
