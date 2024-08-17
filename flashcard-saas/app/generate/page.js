@@ -288,7 +288,7 @@ export default function Generate() {
               sx={{ mb: 2 }}
               onClick={() => setModalOpen(true)}
             >
-              Add to Firebase
+              Add to Dashboard
             </Button>
           </Box>
         </>
