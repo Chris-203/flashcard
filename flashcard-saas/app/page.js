@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <Box>
       <Head>
-        {/* <title>{getTitle()}</title> */}
+        <title>Studify AI</title> 
         <meta name="description" content="Create flashcards from your text" />
       </Head>
 
