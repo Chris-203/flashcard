@@ -1,7 +1,7 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, deleteDoc, } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useSearchParams } from "next/navigation";
 import {
@@ -144,6 +144,19 @@ export default function Flashcard() {
     },
   });
 
+  const handleDeleteFlashcard = async (id) => {
+    try {
+      const flashcardDocRef = doc(
+        collection(doc(collection(db, "users"), user.id), search),
+        id
+      );
+      await deleteDoc(flashcardDocRef); // Deletes the flashcard from Firestore
+      setFlashcards((prev) => prev.filter((flashcard) => flashcard.id !== id)); // Updates the state to remove the deleted flashcard
+    } catch (error) {
+      console.error("Error deleting flashcard:", error);
+    }
+  };
+
   //Each flashcard is displayed as a card that flips when clicked, revealing the back of the card. The flip animation is achieved using CSS transforms and transitions.
   return (
     <Box>
@@ -271,6 +284,16 @@ export default function Flashcard() {
                     </Box>
                   </CardContent>
                 </CardActionArea>
+
+                <Button
+                  variant="outlined"
+                  color="error"
+                  onClick={() => handleDeleteFlashcard(flashcard.id)} // Call delete function
+                  sx={{ m: 1 }}
+                >
+                  Delete
+                </Button>
+
               </Card>
             </Grid>
           ))}
