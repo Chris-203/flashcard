@@ -25,6 +25,7 @@ const CustomAppBar = ({ defaultTitle }) => {
   const pathname = usePathname(); // Use usePathname hook to get the current path
   const router = useRouter(); // Use useRouter hook for navigation
   const [open, setOpen] = useState(false); // State to manage the drawer's open/close state
+  const { user } = useUser(); // Get current user details from Clerk
 
   // StyledToolbar with custom padding for better layout
   const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -71,25 +72,29 @@ const CustomAppBar = ({ defaultTitle }) => {
   return (
     <AppBar position="static">
       <StyledToolbar>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          onClick={toggleDrawer(true)}
-          sx={{ mr: 2, marginTop: -0.5 }}
-        >
-          <MenuIcon />
-        </IconButton>
-        {/* Drawer component that appears when the menu icon is clicked */}
-        <Drawer
-          open={open}
-          onClose={toggleDrawer(false)}
-          PaperProps={{
-            sx: { backgroundColor: "lightblue" }, // Change the background color of the entire Drawer
-          }}
-        >
-          {DrawerList}
-        </Drawer>
+        {/* Conditionally render menu icon and drawer based on user's authentication status */}
+        {user && (
+          <>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+              sx={{ mr: 2, marginTop: -0.5 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer
+              open={open}
+              onClose={toggleDrawer(false)}
+              PaperProps={{
+                sx: { backgroundColor: "lightblue" }, // Change the background color of the entire Drawer
+              }}
+            >
+              {DrawerList}
+            </Drawer>
+          </>
+        )}
 
         {/* Use the new TitleComponent to handle title logic based on the route */}
         <Typography variant="h6" style={{ flexGrow: 1 }}>
@@ -124,7 +129,7 @@ const TitleComponent = ({ defaultTitle, pathname }) => {
     if (pathname.startsWith("/flashcard")) {
       const pathParts = pathname.split("/");
       const collectionName = pathParts[pathParts.length - 1];
-      return collectionName || "Flashcard";
+      return collectionName || "Studify AI";
     }
     switch (pathname) {
       case "/flashcards":
@@ -133,7 +138,7 @@ const TitleComponent = ({ defaultTitle, pathname }) => {
         return "Generate Flashcards";
       default:
         // If user is logged in, show their first name in the title, otherwise use default
-        return user ? `Welcome ${user.firstName || "User"}` : "Flashcard";
+        return user ? `Welcome ${user.firstName || "User"}` : "Studify AI";
     }
   };
 
