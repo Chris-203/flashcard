@@ -9,7 +9,7 @@ export default function Home() {
   const handleSubmit = async () => {
     const checkoutSession = await fetch("/api/checkout_session", {
       method: "POST",
-      headers: { origin: "http://localhost:3000" },
+      headers: { origin: "https://ai-studify.vercel.app/" },
     });
     const checkoutSessionJson = await checkoutSession.json();
 
