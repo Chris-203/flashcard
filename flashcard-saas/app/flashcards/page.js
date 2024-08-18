@@ -1,7 +1,7 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc, getDocs,updateDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useRouter } from "next/navigation";
 import {
@@ -33,14 +33,40 @@ export default function Flashcard() {
   useEffect(() => {
     async function getFlashcards() {
       if (!user) return;
-      const docRef = doc(collection(db, "users"), user.id);
-      const docSnap = await getDoc(docRef);
+      const userDocRef = doc(collection(db, "users"), user.id);
+      const docSnap = await getDoc(userDocRef);
       if (docSnap.exists()) {
         const collections = docSnap.data().flashcards || [];
+         // Iterate through each collection and update the count
+      // Iterate through each collection and update the count
+      const updatedCollections = await Promise.all(
+        collections.map(async (collectionItem) => {
+          const flashcardsCollectionRef = collection(userDocRef, collectionItem.name);
+
+          const flashcardsSnapshot = await getDocs(flashcardsCollectionRef);
+          const flashcardCount = flashcardsSnapshot.size;
+
+          // Update the count in the collection array
+          collectionItem.count = flashcardCount;
+
+          // Update the count in Firestore
+          const collectionIndex = collections.findIndex(col => col.name === collectionItem.name);
+          if (collectionIndex > -1) {
+            collections[collectionIndex].count = flashcardCount;
+          }
+
+          return collectionItem;
+        })
+      );
+
+      // Update the entire flashcards array in the user document
+      await updateDoc(userDocRef, {
+        flashcards: updatedCollections,
+      });
         setFlashcards(collections);
         setFilteredFlashcards(collections);
       } else {
-        await setDoc(docRef, { flashcards: [] });
+        await setDoc(userDocRef, { flashcards: [] });
       }
     }
     getFlashcards();
