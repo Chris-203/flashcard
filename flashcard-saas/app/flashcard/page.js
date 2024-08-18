@@ -228,7 +228,7 @@ export default function Flashcard() {
           {flashcards.map((flashcard, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
-                sx={{ backgroundColor: "#9ea9b1", width: "100%", mx: "auto" }}
+                sx={{ backgroundColor: "#9c27b0", width: "100%", mx: "auto" }}
               >
                 <CardActionArea
                   onClick={() => {
@@ -245,7 +245,7 @@ export default function Flashcard() {
                           position: "relative",
                           width: "100%",
                           height: "200px",
-                          bgcolor: "#eeeeee", //Card front
+                          bgcolor: "lightblue", //Card front
                           boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
                           transform: flipped[index]
                             ? "rotateY(180deg)"
@@ -284,15 +284,16 @@ export default function Flashcard() {
                     </Box>
                   </CardContent>
                 </CardActionArea>
-
+              <Box textAlign={"center"}>
                 <Button
                   variant="outlined"
-                  color="error"
+                  color="warning"
                   onClick={() => handleDeleteFlashcard(flashcard.id)} // Call delete function
                   sx={{ m: 1 }}
                 >
                   Delete
                 </Button>
+              </Box>
 
               </Card>
             </Grid>
